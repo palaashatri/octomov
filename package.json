@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start" : "node app.js"
+    "start": "node app.js"
   },
   "author": "Palaash Atri",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "request": "^2.88.2"
