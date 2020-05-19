@@ -3,6 +3,7 @@ const express = require('express'),
     request = require('request'),
     dotenv = require("dotenv");
 
+app.use(express.static('public'));
 dotenv.config();
 const apikey =  process.env.API_KEY; //from the web developer bootcamp - colt steele (udemy)
 
