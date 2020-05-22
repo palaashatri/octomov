@@ -9,11 +9,11 @@ const apikey =  process.env.API_KEY; //from the web developer bootcamp - colt st
 
 app.set("view engine","ejs");
 
-app.get("/",function(req,res){
+app.get("/",(req,res)=>{
     res.render("home");
 });
 
-app.get("/results",function(req,res){
+app.get("/results",(req,res)=>{
     let query = req.query.search; // get search query from "home.ejs"
     let url = `http://omdbapi.com/?s=${query}&apikey=${apikey}`; // create a template url to pass to the request function below
     request(url,function(error,response,body){ // callback function with parameters error, response and body from request
@@ -28,6 +28,6 @@ app.get("/results/:id",(req,res)=>{
     res.render("details");
 });
 
-app.listen(process.env.PORT || 5005,function () {
+app.listen(process.env.PORT || 5005, ()=> {
     console.log('Movie app is running!');
 });
