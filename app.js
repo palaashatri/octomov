@@ -31,7 +31,7 @@ app.get("/results/:id",(req,res)=>{
     request(url,(error,response,body)=>{
         if(!error && response.statusCode == 200){
             let movie = JSON.parse(body);
-            res.render("details",{movie:movie});
+            res.render("details",{movie:movie,url:url});
         }
     })
     
