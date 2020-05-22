@@ -24,6 +24,9 @@ app.get("/results",function(req,res){
     })
 });
 
+app.get("/results/:id",(req,res)=>{
+    res.render("details");
+});
 
 app.listen(process.env.PORT || 5005,function () {
     console.log('Movie app is running!');
