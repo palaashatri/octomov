@@ -25,7 +25,16 @@ app.get("/results",(req,res)=>{
 });
 
 app.get("/results/:id",(req,res)=>{
-    res.render("details");
+    let strID = req.params.id;
+    let imdbID = parseInt(strID.substr(2));
+    let url = `http://omdbapi.com/?i=tt${imdbID}&apikey=${apikey}`;
+    request(url,(error,response,body)=>{
+        if(!error && response.statusCode == 200){
+            let movie = JSON.parse(body);
+            res.render("details",{movie:movie});
+        }
+    })
+    
 });
 
 app.listen(process.env.PORT || 5005, ()=> {
