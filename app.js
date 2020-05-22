@@ -25,9 +25,8 @@ app.get("/results",(req,res)=>{
 });
 
 app.get("/results/:id",(req,res)=>{
-    let strID = req.params.id;
-    let imdbID = parseInt(strID.substr(2));
-    let url = `http://omdbapi.com/?i=tt${imdbID}&apikey=${apikey}`;
+    let imdbID = req.params.id;
+    let url = `http://omdbapi.com/?i=${imdbID}&apikey=${apikey}`;
     request(url,(error,response,body)=>{
         if(!error && response.statusCode == 200){
             let movie = JSON.parse(body);
