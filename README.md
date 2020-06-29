@@ -1,7 +1,7 @@
 # OctoMov
 
 * OctoMov is a movie search application
-* It utilises OMDB API
+* It utilises OMDb API
 * Built with Express and NodeJS
 * Deployed on Heroku @ <https://octomov.herokuapp.com/>
 
