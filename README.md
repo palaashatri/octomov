@@ -7,7 +7,7 @@
 
 ## API Key
 How to get your own API key? Go to <http://www.omdbapi.com/> and ask for an API Key to use for your project.
-Then, create a `.env` file into the main directory, and add environment variable like this : 
+Then, create a `.env` file into the main directory (if you use Linux/MacOS : `touch .env`, if you use Windows : `powershell New-Item .env`), and add environment variable like this : 
 ```
 API_KEY = "{yourapikey}"
 ```
