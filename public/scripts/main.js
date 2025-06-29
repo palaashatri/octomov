@@ -8,20 +8,34 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       const query = input.value.trim();
       if (!query) return;
-      resultsDiv.innerHTML = 'Loading...';
+      resultsDiv.textContent = 'Loading...';
       try {
         const res = await fetch(`/api/results?search=${encodeURIComponent(query)}`);
         const json = await res.json();
         if (json.data && json.data.Search) {
-          resultsDiv.innerHTML = `<h2>Results for "${query}"</h2><ul>` +
-            json.data.Search.map(movie =>
-              `<li><strong>${movie.Title}</strong> - ${movie.Year} <a href="/details.html?id=${movie.imdbID}">Read More!</a></li>`
-            ).join('') + '</ul>';
+          resultsDiv.textContent = ''; // Clear previous results
+          const heading = document.createElement('h2');
+          heading.textContent = `Results for "${query}"`;
+          resultsDiv.appendChild(heading);
+          const list = document.createElement('ul');
+          json.data.Search.forEach(movie => {
+            const listItem = document.createElement('li');
+            const strong = document.createElement('strong');
+            strong.textContent = movie.Title;
+            listItem.appendChild(strong);
+            listItem.appendChild(document.createTextNode(` - ${movie.Year} `));
+            const link = document.createElement('a');
+            link.textContent = 'Read More!';
+            link.href = `/details.html?id=${movie.imdbID}`;
+            listItem.appendChild(link);
+            list.appendChild(listItem);
+          });
+          resultsDiv.appendChild(list);
         } else {
-          resultsDiv.innerHTML = 'No results found.';
+          resultsDiv.textContent = 'No results found.';
         }
       } catch (err) {
-        resultsDiv.innerHTML = 'Error fetching results.';
+        resultsDiv.textContent = 'Error fetching results.';
       }
     });
   }
