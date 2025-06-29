@@ -2,16 +2,12 @@
   "name": "movie-app",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
+  "main": "public/scripts/main.js",
+  "scripts": {},
   "author": "Palaash Atri",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.10",
-    "express": "^4.21.0",
-    "request": "^2.88.2"
+  "devDependencies": {
+    "netlify-cli": "^22.2.1",
+    "node-fetch": "^2.7.0"
   }
 }
