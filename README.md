@@ -7,11 +7,7 @@ A retro Windows 98-inspired movie search app using the OMDb API, with serverless
 👉 [octomov.netlify.app](https://octomov.netlify.app/)
 
 ## Screenshots
-![Main](https://github.com/user-attachments/assets/a398ab5d-dc1d-4afa-ba80-1510243c68d7)
-![Results](https://github.com/user-attachments/assets/4782a148-fb63-43a0-867d-a310c6d91bfe)
-![Details](https://github.com/user-attachments/assets/7f6814b7-c33b-44fa-a988-ee6c2809bc29)
-
-
+![31180efc-aa8b-4d63-96df-05de65209c98](https://github.com/user-attachments/assets/6e05e1f0-b660-4df7-8bf9-25fced7aef14)
 
 ## Features
 
