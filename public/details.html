@@ -7,10 +7,19 @@
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
+  <nav class="navbar">
+    <a href="/" class="logo">
+      <img src="/images/logo.svg" alt="Octomov Logo" class="logo-img" />
+      Octomov
+    </a>
+  </nav>
   <div class="container" id="details-container">
     <div id="details"></div>
     <a href="/">Back to Search</a>
   </div>
+  <footer class="footer">
+    &copy; 2025 Octomov &mdash; <a href="https://github.com/palaashatri/octomov">GitHub</a>
+  </footer>
   <script>
     async function loadDetails() {
       const params = new URLSearchParams(window.location.search);
@@ -24,11 +33,36 @@
         const res = await fetch(`/api/details?id=${encodeURIComponent(id)}`);
         const json = await res.json();
         if (json.movie && json.movie.Title) {
+          // Helper to make names clickable
+          function makeLinks(str, type) {
+            if (!str) return '';
+            return str.split(',').map(s => {
+              const name = s.trim();
+              const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(name)}`;
+              return `<a href="${googleUrl}" class="person-link" target="_blank" rel="noopener">${name}</a>`;
+            }).join(', ');
+          }
           document.getElementById('details').innerHTML = `
-            <h1><strong>${json.movie.Title}</strong> - ${json.movie.Year}</h1>
-            <h6>${json.movie.Rated} | ${json.movie.Runtime} | ${json.movie.Genre} | ${json.movie.Released}</h6>
-            <div><img src="${json.movie.Poster}" alt="${json.movie.Title} Poster"></div>
-            <p>${json.movie.Plot}</p>
+            <div class="details-flex">
+              <div class="details-poster-col">
+                <img src="${json.movie.Poster}" alt="${json.movie.Title} Poster" class="details-poster">
+              </div>
+              <div class="details-info-col">
+                <h1><strong>${json.movie.Title}</strong> <span class="details-year">(${json.movie.Year})</span></h1>
+                <h6>${json.movie.Rated} | ${json.movie.Runtime} | ${json.movie.Genre} | ${json.movie.Released}</h6>
+                <p class="details-plot">${json.movie.Plot}</p>
+                <div class="details-meta">
+                  <div><strong>Director:</strong> ${makeLinks(json.movie.Director, 'director')}</div>
+                  <div><strong>Writer:</strong> ${makeLinks(json.movie.Writer, 'writer')}</div>
+                  <div><strong>Actors:</strong> ${makeLinks(json.movie.Actors, 'actor')}</div>
+                  <div><strong>Language:</strong> ${json.movie.Language}</div>
+                  <div><strong>Country:</strong> ${json.movie.Country}</div>
+                  <div><strong>IMDB Rating:</strong> ${json.movie.imdbRating}</div>
+                  <div><strong>Awards:</strong> ${json.movie.Awards}</div>
+                </div>
+                <div class="details-fullplot"><strong>Full Plot:</strong><br>${json.movie.Plot}</div>
+              </div>
+            </div>
           `;
         } else {
           document.getElementById('details').innerText = 'Movie not found.';
