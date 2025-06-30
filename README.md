@@ -1,14 +1,60 @@
-# OctoMov
+# Octomov
 
-* OctoMov is a movie search application
-* It utilises OMDb API
-* Built with Express and NodeJS
-* Deployed on Heroku @ <https://octomov.herokuapp.com/>
+A retro Windows 98-inspired movie search app using the OMDb API, with serverless functions for pagination, details, and poster support.
 
-## API Key
-How to get your own API key? Go to <http://www.omdbapi.com/> and ask for an API Key to use for your project.
-Then, create a `.env` file into the main directory (if you use Linux/MacOS : `touch .env`, if you use Windows : `powershell New-Item .env`), and add environment variable like this : 
-```
-API_KEY = "{yourapikey}"
-```
-Remove the curly braces though! 😂
+## Live Demo
+
+👉 [octomov.netlify.app](https://octomov.netlify.app/)
+
+## Features
+
+- Search for movies by title
+- Paginated results with posters and short plots
+- Responsive, retro UI (Win98 style)
+- Movie details page with full plot, IMDB-style info, and clickable names (Google search)
+- Serverless backend (Netlify Functions) for OMDb API proxying
+
+## Tech Stack
+
+- HTML, CSS, JavaScript (Vanilla)
+- OMDb API
+- Netlify Functions (Node.js)
+- Deployed on Netlify
+
+## Local Development
+
+1. Clone the repo:
+
+   ```sh
+   git clone https://github.com/palaashatri/octomov.git
+   cd octomov
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Run locally with Netlify CLI:
+
+   ```sh
+   npx netlify dev
+   ```
+
+   The app will be available at `http://localhost:8888`.
+
+## Deployment
+
+- The app is deployed at [octomov.netlify.app](https://octomov.netlify.app/)
+- Static files are in `/public/`
+- Serverless functions are in `/netlify/functions/`
+- See `netlify.toml` for function routing
+
+## License
+
+MIT
+
+---
+
+> Not affiliated with IMDB or OMDb. For educational/demo use only.
